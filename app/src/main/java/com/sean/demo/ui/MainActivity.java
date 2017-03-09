@@ -51,7 +51,6 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         context = MainActivity.this;
         initView();
-        Logger.d("MainActivity+====onCreate");
     }
 
     @Override

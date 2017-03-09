@@ -19,45 +19,37 @@ import com.sean.demo.R;
 
 public class BaseActivity extends AppCompatActivity {
 
-    TextView commonTitleTv;
-    Toolbar commonTitleTb;
-    RelativeLayout content;
+    private TextView commonTitleTv;
+    private Toolbar commonTitleTb;
+    private RelativeLayout content;
+
+    public void setToolBarOnclick(Toolbar.OnMenuItemClickListener onclick){
+        commonTitleTb.setOnMenuItemClickListener(onclick);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-//        ButterKnife.bind(BaseActivity.this);
         initView();
         setSupportActionBar(commonTitleTb);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        Logger.d("BaseActivity+====onCreate");
+//        setBackArrow();
     }
 
     private void initView() {
         commonTitleTv = (TextView) findViewById(R.id.common_title_tv);
         commonTitleTb = (Toolbar) findViewById(R.id.common_title_tb);
         content = (RelativeLayout) findViewById(R.id.content);
-
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Logger.d("BaseActivity+====onResume");
-    }
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.menu_main, menu);
-        Logger.d("base");
-
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        this.getMenuInflater().inflate(R.menu.menu_main, menu);
+//        Logger.d("menu");
+//        return true;
+//    }
     /**
      * 设置左上角back按钮
      */
@@ -69,6 +61,14 @@ public class BaseActivity extends AppCompatActivity {
         // 给左上角图标的左边加上一个返回的图标 。对应ActionBar.DISPLAY_HOME_AS_UP
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //设置actionBar的标题是否显示，对应ActionBar.DISPLAY_SHOW_TITLE。
+    }
+
+    /**
+     * 隐藏掉右边的图标
+     */
+    public void hideRightIcon(){
+        getSupportActionBar().setDisplayShowCustomEnabled(false);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     /**

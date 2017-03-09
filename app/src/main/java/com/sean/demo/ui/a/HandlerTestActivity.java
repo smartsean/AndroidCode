@@ -25,7 +25,7 @@ public class HandlerTestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.a_activity_handler_test);
         initView();
-        setBackArrow();
+//        setBackArrow();
         setTitle(getString(R.string.handler_use));
         handler = new Handler() {
             @Override
@@ -36,11 +36,11 @@ public class HandlerTestActivity extends BaseActivity {
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_handler, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_handler, menu);
+        return true;
+    }
 
     @Override
     protected void onResume() {
