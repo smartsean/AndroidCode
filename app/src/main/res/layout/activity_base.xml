@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_base"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sean.demo.ui.BaseActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/common_title_tb"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_toolbar_height"
+        android:background="@color/colorPrimary"
+        android:elevation="6dp">
+
+        <TextView
+            android:id="@+id/common_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="我是标题"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <!--<View-->
+        <!--android:id="@+id/common_title_divider"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@drawable/common_horizontal_divider" />-->
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    </RelativeLayout>
+
+</LinearLayout>

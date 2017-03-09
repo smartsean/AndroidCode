@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/index_tabs_rg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_tab_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/index_tab_a"
+            style="@style/Index_tab_style"
+            android:drawableTop="@drawable/index_tab_a"
+            android:text="@string/tab_a" />
+
+        <RadioButton
+            android:id="@+id/index_tab_b"
+            style="@style/Index_tab_style"
+            android:drawableTop="@drawable/index_tab_b"
+            android:text="@string/tab_b" />
+
+        <RadioButton
+            android:id="@+id/index_tab_c"
+            style="@style/Index_tab_style"
+            android:drawableTop="@drawable/index_tab_c"
+            android:text="@string/tab_c" />
+
+        <RadioButton
+            android:id="@+id/index_tab_d"
+            style="@style/Index_tab_style"
+            android:drawableTop="@drawable/index_tab_d"
+            android:text="@string/tab_d" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/index_bottom_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/index_tabs_rg"
+        android:background="@drawable/common_horizontal_divider" />
+
+    <FrameLayout
+        android:id="@+id/index_content_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/index_bottom_divider" />
+
+
+</RelativeLayout>

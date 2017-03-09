@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#32b9c1</color>
+    <color name="colorPrimaryDark">#32b9c1</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <!--自定义颜色-->
+    <color name="white">#ffffff</color>
+    <color name="blue">#303F9F</color>
+
+
+    <!--底部tab栏按下与不按下的颜色-->
+    <color name="index_tab_color_nor">#6c7c7f</color>
+    <color name="index_tab_color_pre">#32b9c1</color>
+
+    <!--公共分隔线颜色-->
+    <color name="common_divider_color">#eaedf0</color>
+</resources>

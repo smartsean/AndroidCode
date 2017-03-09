@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">AndroidCode</string>
+
+    <!--主页-->
+    <string name="tab_a">好好</string>
+    <string name="tab_b">学习</string>
+    <string name="tab_c">天天</string>
+    <string name="tab_d">向上</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="fragment_a_title">FragmentA页面</string>
+    <string name="fragment_b_title">FragmentB页面</string>
+    <string name="fragment_c_title">FragmentC页面</string>
+    <string name="fragment_d_title">FragmentD页面</string>
+    <string name="handler_use">Handler使用</string>
+
+
+</resources>
