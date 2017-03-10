@@ -27,8 +27,6 @@ public class EventBusActivity extends BaseActivity {
         return true;
     }
 
-
-
     private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
@@ -42,7 +40,7 @@ public class EventBusActivity extends BaseActivity {
                     break;
             }
 
-            if(!msg.equals("")) {
+            if (!msg.equals("")) {
                 Toast.makeText(EventBusActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
             return true;

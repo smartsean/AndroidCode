@@ -1,25 +1,48 @@
 apply plugin: 'com.android.application'
 
 android {
+    //编译版本
     compileSdkVersion 25
+    //build tool 版本
     buildToolsVersion "25.0.2"
     defaultConfig {
+        //包名
         applicationId "com.sean.demo"
+        //最小支持的SDK版本
         minSdkVersion 15
+        //经过充分测试是被的SDK版本，也就是目标SDK版本
         targetSdkVersion 25
+        //版本号
         versionCode 1
+        //版本名称
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
-        release {
+
+
+        //编译类型为debug
+        debug {
+            // 是否开启混淆
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        //编译类型为release
+        release {
+            // 是否开启混淆
+            minifyEnabled false
+            //混淆文件的位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
+//项目所添加的依赖
 dependencies {
+    // 编译libs目录下的所有jar包
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

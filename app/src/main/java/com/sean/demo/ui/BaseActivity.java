@@ -23,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
     private Toolbar commonTitleTb;
     private RelativeLayout content;
 
-    public void setToolBarOnclick(Toolbar.OnMenuItemClickListener onclick){
+    public void setToolBarOnclick(Toolbar.OnMenuItemClickListener onclick) {
         commonTitleTb.setOnMenuItemClickListener(onclick);
     }
 
@@ -44,12 +44,19 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+    public void setToolBar(Toolbar toolBar) {
+        setSupportActionBar(toolBar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        this.getMenuInflater().inflate(R.menu.menu_main, menu);
 //        Logger.d("menu");
 //        return true;
 //    }
+
     /**
      * 设置左上角back按钮
      */
@@ -61,32 +68,38 @@ public class BaseActivity extends AppCompatActivity {
         // 给左上角图标的左边加上一个返回的图标 。对应ActionBar.DISPLAY_HOME_AS_UP
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //设置actionBar的标题是否显示，对应ActionBar.DISPLAY_SHOW_TITLE。
+        commonTitleTb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     /**
      * 隐藏掉右边的图标
      */
-    public void hideRightIcon(){
+    public void hideRightIcon() {
         getSupportActionBar().setDisplayShowCustomEnabled(false);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
-    /**
-     * 点击左上角的返回按钮，结束本Activity
-     * home就是左上角的小箭头，在toolbar上
-     *
-     * @param item
-     * @return
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    /**
+//     * 点击左上角的返回按钮，结束本Activity
+//     * home就是左上角的小箭头，在toolbar上
+//     *
+//     * @param item
+//     * @return
+//     */
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        if (item.getItemId() == android.R.id.home) {
+//            finish();
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void setContentLayout(int layoutId) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

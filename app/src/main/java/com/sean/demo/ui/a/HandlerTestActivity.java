@@ -1,21 +1,28 @@
 package com.sean.demo.ui.a;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
+
+import butterknife.BindView;
 
 public class HandlerTestActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
 
     TextView show;
+    @BindView(R.id.input)
+    EditText input;
+    @BindView(R.id.handler_tb)
+    Toolbar handlerTb;
 
     private String message = "Sean";
     Handler handler;
@@ -25,8 +32,10 @@ public class HandlerTestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.a_activity_handler_test);
         initView();
+        setToolBar(handlerTb);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 //        setBackArrow();
-        setTitle(getString(R.string.handler_use));
+//        setTitle(getString(R.string.handler_use));
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
