@@ -15,36 +15,40 @@ public class EventBusActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentLayout(R.layout.activity_event_bus);
-        setTitle("EventBus使用");
-        setBackArrow();
-        setToolBarOnclick(onMenuItemClick);
+        setContentLayout(R.layout.activity_event_bus);//设置到BaseActivity中的content中
+        setTitle("EventBus使用");//设置标题
+        setBackArrow();//设置返回按钮和点击事件
+        setToolBarMenuOnclick(new EventBusMenuItemClick());//设置menu菜单的显示和点击事件
     }
 
+    /**
+     * 显示菜单
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_eventbus, menu);
         return true;
     }
 
-    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+    /**
+     * 创建菜单点击事件
+     */
+    class EventBusMenuItemClick implements Toolbar.OnMenuItemClickListener {
         @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            String msg = "";
-            switch (menuItem.getItemId()) {
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
                 case R.id.action_message:
-                    msg += "Click edit";
+                    Toast.makeText(EventBusActivity.this, "Click action_message", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.action_message1:
-                    msg += "Click share";
+                    Toast.makeText(EventBusActivity.this, "Click action_message1", Toast.LENGTH_SHORT).show();
                     break;
-            }
-
-            if (!msg.equals("")) {
-                Toast.makeText(EventBusActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
             return true;
         }
-    };
+    }
 
 }

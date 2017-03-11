@@ -1,40 +1,46 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'//表示此module是一个可以直接运行的app，可以直接run的
+// apply plugin: 'com.android.library'//这表示此module是一个安卓依赖库的工程，不可直接run
+// apply plugin: 'java' //这表示此module是一个java项目，在此module中只能使用java的api
 
 android {
-    //编译版本
+    //开发时采用的编译版本
     compileSdkVersion 25
-    //build tool 版本
+    //编译时采用的编译工具版本
     buildToolsVersion "25.0.2"
+
+    //项目的默认配置信息
     defaultConfig {
-        //包名
+        //包名，应用的id，唯一标示
         applicationId "com.sean.demo"
-        //最小支持的SDK版本
+        //决定此应用最低兼容的安卓系统版本
         minSdkVersion 15
-        //经过充分测试是被的SDK版本，也就是目标SDK版本
+        //经过充分测试是被的SDK版本，也就是目标SDK版本（决定此应用最高可兼容的安卓系统版本）
         targetSdkVersion 25
         //版本号
         versionCode 1
-        //版本名称
+        //版本名
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    //构建的类型方式
     buildTypes {
 
 
-        //编译类型为debug
+        //方式为release，一般这种是定义为测试包渠道
         debug {
             // 是否开启混淆
             minifyEnabled false
+            //混淆文件的路径，注意这里用的是proguardFiles，是后面带s的，所以可以添加多个混淆文件路径，每个之间用“,“号隔开
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        //编译类型为release
+        //方式为release，一般这种是定义为正式包渠道
         release {
             // 是否开启混淆
             minifyEnabled false
-            //混淆文件的位置
+            //混淆文件的路径，注意这里用的是proguardFiles，是后面带s的，所以可以添加多个混淆文件路径，每个之间用“,“号隔开
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -42,7 +48,7 @@ android {
 
 //项目所添加的依赖
 dependencies {
-    // 编译libs目录下的所有jar包
+    // 编译libs目录下的所有jar包（编译的文件树）
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -81,5 +87,12 @@ dependencies {
     /** 带动画的menu*/
     compile 'com.nightonke:boommenu:2.0.7'
 
+    //测试项目需要引用的
     testCompile 'junit:junit:4.12'
+
+    compile 'com.mikepenz:actionitembadge:3.3.0@aar'
+    //SUB-DEPENDENCIES
+    //Android-Iconics - used to provide an easy API for icons
+    compile 'com.mikepenz:iconics-core:2.8.0@aar'
+
 }

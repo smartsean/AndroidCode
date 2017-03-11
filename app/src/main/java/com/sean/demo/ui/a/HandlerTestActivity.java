@@ -5,9 +5,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
@@ -19,11 +20,8 @@ public class HandlerTestActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
 
     TextView show;
-    @BindView(R.id.input)
-    EditText input;
     @BindView(R.id.handler_tb)
     Toolbar handlerTb;
-
     private String message = "Sean";
     Handler handler;
 
@@ -32,17 +30,29 @@ public class HandlerTestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.a_activity_handler_test);
         initView();
-        setToolBar(handlerTb);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        setBackArrow();
-//        setTitle(getString(R.string.handler_use));
+        setToolBar(R.id.handler_tb);
+        setToolBarMenuOnclick(new HandlerMenuClickListener());
+        setBackArrow();
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 show.setText("msgWhat " + msg.what + ";" + "msObj" + msg.obj);
             }
         };
+    }
 
+
+    class HandlerMenuClickListener implements Toolbar.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_message:
+                    Toast.makeText(HandlerTestActivity.this, "clicked me", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return false;
+        }
     }
 
     @Override
@@ -54,7 +64,6 @@ public class HandlerTestActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     private void initView() {

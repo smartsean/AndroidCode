@@ -3,14 +3,13 @@ package com.sean.demo.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.CompoundButton;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.orhanobut.logger.Logger;
 import com.sean.demo.R;
 import com.sean.demo.ui.index.AFragment;
 import com.sean.demo.ui.index.BFragment;
@@ -48,16 +47,10 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_main);
+        setToolBarMenuOnclick(new mainToolBarMenuClick());
         ButterKnife.bind(this);
         context = MainActivity.this;
         initView();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Logger.d("MainActivity+====onResume");
-
     }
 
     private void initView() {
@@ -68,11 +61,26 @@ public class MainActivity extends BaseActivity {
         indexTabA.setChecked(true);
     }
 
+
+    class mainToolBarMenuClick implements Toolbar.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_refresh:
+                    Toast.makeText(context, "refresh", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.action_message:
+                    Toast.makeText(context, "message", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return false;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        Logger.d("main");
-
         return true;
     }
 

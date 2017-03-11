@@ -25,17 +25,10 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <!--<View-->
-        <!--android:id="@+id/common_title_divider"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@drawable/common_horizontal_divider" />-->
-
     <RelativeLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-    </RelativeLayout>
+        android:orientation="horizontal"></RelativeLayout>
 
 </LinearLayout>

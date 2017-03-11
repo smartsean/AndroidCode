@@ -50,8 +50,8 @@ public class AFragment extends BaseSupportFragment {
      * 初始化主页显示数据
      */
     private void initData() {
-        commonListModelList.add(new CommonListModel("Handler的简单使用", HandlerTestActivity.class));
-        commonListModelList.add(new CommonListModel("EventBus3.0的简单使用", EventBusActivity.class));
+        commonListModelList.add(new CommonListModel("Handler", HandlerTestActivity.class));
+        commonListModelList.add(new CommonListModel("EventBus", EventBusActivity.class));
     }
 
     private void initRecycler() {
