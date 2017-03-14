@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.orhanobut.logger.Logger;
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
 
