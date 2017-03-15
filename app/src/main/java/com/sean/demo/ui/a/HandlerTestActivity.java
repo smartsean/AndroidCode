@@ -2,8 +2,10 @@ package com.sean.demo.ui.a;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +43,6 @@ public class HandlerTestActivity extends BaseActivity {
         };
     }
 
-
     class HandlerMenuClickListener implements Toolbar.OnMenuItemClickListener {
 
         @Override
@@ -61,15 +62,13 @@ public class HandlerTestActivity extends BaseActivity {
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void initView() {
         show = (TextView) findViewById(R.id.show);
         handler = new Handler();
 
+        /**
+         *使用post方法直接更新ui线程
+         */
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +86,10 @@ public class HandlerTestActivity extends BaseActivity {
                 }).start();
             }
         });
+
+        /**
+         *使用runOnUiThread更新ui线程
+         */
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +108,9 @@ public class HandlerTestActivity extends BaseActivity {
             }
         });
 
+        /**
+         * 会崩溃的
+         */
         findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +124,9 @@ public class HandlerTestActivity extends BaseActivity {
         });
 
 
-        //此种方式能在onResume中或者其之前调用，因为zaionResume中会初始化控制ui线程更新ui的一些控制
+        /**
+         * 此种方式能在onResume中或者其之前调用，因为zaionResume中会初始化控制ui线程更新ui的一些控制
+         */
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +141,9 @@ public class HandlerTestActivity extends BaseActivity {
         });
 
 
+        /**
+         * 子线程中使用主线程中创建的Handler发送消息，在主线程中的Handler中处理
+         */
         findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +156,34 @@ public class HandlerTestActivity extends BaseActivity {
                         handler.sendMessage(msg);
                     }
                 }).start();
+            }
+        });
+
+        /**
+         * 子线程中创建Handler发送消息，在子线程中的Handler中处理
+         */
+        findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        Handler handler1;
+                        handler1 = new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                Log.d(TAG, "handleMessage: " + msg.obj);
+                            }
+                        };
+                        Message msg = new Message();
+                        msg.what = 1;
+                        msg.obj = "测试子线程message";
+                        handler1.sendMessage(msg);
+                        Looper.loop();
+                    }
+                }).start();
+
             }
         });
     }

@@ -1,1 +1,1 @@
-include ':app', ':seanlib'
+include ':app', ':seanlib', ':seanjavalib'
