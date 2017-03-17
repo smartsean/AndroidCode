@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sean.demo.ui.a.HandlerTestActivity">
+    tools:context="com.sean.demo.ui.a.activity.HandlerTestActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/handler_tb"

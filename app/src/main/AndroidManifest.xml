@@ -19,17 +19,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.a.HandlerTestActivity"
+            android:name=".ui.a.activity.HandlerTestActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.a.EventBusActivity"
+            android:name=".ui.a.activity.EventBusActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.BaseActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.a.activity.TimeLineActivity"></activity>
     </application>
 
 </manifest>

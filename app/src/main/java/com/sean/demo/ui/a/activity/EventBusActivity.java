@@ -1,4 +1,4 @@
-package com.sean.demo.ui.a;
+package com.sean.demo.ui.a.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;

@@ -16,8 +16,9 @@ import com.sean.demo.R;
 import com.sean.demo.adapter.common.CommonListAdapter;
 import com.sean.demo.adapter.common.CommonListModel;
 import com.sean.demo.ui.BaseSupportFragment;
-import com.sean.demo.ui.a.EventBusActivity;
-import com.sean.demo.ui.a.HandlerTestActivity;
+import com.sean.demo.ui.a.activity.EventBusActivity;
+import com.sean.demo.ui.a.activity.HandlerTestActivity;
+import com.sean.demo.ui.a.activity.TimeLineActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class AFragment extends BaseSupportFragment {
     private void initData() {
         commonListModelList.add(new CommonListModel("Handler", HandlerTestActivity.class));
         commonListModelList.add(new CommonListModel("EventBus", EventBusActivity.class));
+        commonListModelList.add(new CommonListModel("时间线", TimeLineActivity.class));
     }
 
     private void initRecycler() {

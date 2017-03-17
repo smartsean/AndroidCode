@@ -6,6 +6,5 @@ public class SeanMain {
 
     public static void main(String[] args) {
 
-
     }
 }
