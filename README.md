@@ -24,4 +24,4 @@
 
 ### ScreenUtils [屏幕工具类](https://github.com/Seancss/AndroidCode/blob/master/seanlib/src/main/java/com/sean/lib/utils/ScreenUtils.java)
 
-### ScreenUtils [SharedPreferences工具类](https://github.com/Seancss/AndroidCode/blob/master/seanlib/src/main/java/com/sean/lib/utils/SharePrefUtil.java)
+### SharePrefUtil [SharedPreferences工具类](https://github.com/Seancss/AndroidCode/blob/master/seanlib/src/main/java/com/sean/lib/utils/SharePrefUtil.java)
