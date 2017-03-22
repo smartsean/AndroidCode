@@ -51,8 +51,15 @@ public class RecyclerDemoActivity extends BaseActivity {
         setBackArrow();
         initData();
         lm = new LinearLayoutManager(context);
-        recyclerDemo.setLayoutManager(lm);
-        recyclerDemoAdapter = new RecyclerDemoAdapter(context, recyclerDemoModels);
+//        recyclerDemo.setLayoutManager(lm);
+//        recyclerDemoAdapter = new RecyclerDemoAdapter(context, recyclerDemoModels);
+//        recyclerDemo.setAdapter(recyclerDemoAdapter);
+        initDataForStaggeredGridLayout();
+        StaggeredGridLayoutManager sgl = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerDemo.setLayoutManager(sgl);
+        recyclerDemoAdapter = new RecyclerDemoAdapter(context, recyclerDemoModels1);
+        recyclerDemoAdapter.getRandomHeight(recyclerDemoModels1);
+
         recyclerDemo.setAdapter(recyclerDemoAdapter);
     }
 
@@ -75,17 +82,18 @@ public class RecyclerDemoActivity extends BaseActivity {
     }
 
     private void initDataForStaggeredGridLayout() {
-        recyclerDemoModels1.clear();
+        recyclerDemoModels1 = new ArrayList<>();
         recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.a, "这是第一个"));
-        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.d, "这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个这是第二个"));
-        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.e, "这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个这是第四个"));
+        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.d, "这是第二个"));
+        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.e, "这是第四个"));
         recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.eee, "这是第四个"));
-        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.f, "这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个这是第五个"));
-        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.g, "这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个这是第六个"));
+        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.f, "这是第五个"));
+        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.g, "这是第六个"));
         recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.h, "这是第七个"));
-        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.i, "这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个这是第八个"));
-        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.a, "这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个这是第九个"));
+        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.i, "这是第八个"));
+        recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.a, "这是第九个"));
     }
+
 
 
     @OnClick({R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4})

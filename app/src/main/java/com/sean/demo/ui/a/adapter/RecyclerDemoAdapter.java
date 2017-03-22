@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.sean.demo.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,17 @@ import java.util.List;
  */
 
 public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapter.ViewHolder> {
+
+    private List<Integer> mHeights;
+
+
+    public void getRandomHeight(List<RecyclerDemoModel> mList){
+        mHeights = new ArrayList<>();
+        for(int i=0; i < mList.size();i++){
+            //随机的获取一个范围为200-600直接的高度
+            mHeights.add((int)(300+Math.random()*400));
+        }
+    }
 
     // 首先定义一个ViewHolder，用于复用View
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +63,11 @@ public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapte
     // onBindViewHolder 主要用于操作数据和控件的
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+        layoutParams.height = mHeights.get(position);
+        holder.itemView.setLayoutParams(layoutParams);
+
         RecyclerDemoModel bean = recyclerDemoModels.get(position);
         holder.imageId.setImageResource(bean.getImageId());
         holder.desc.setText(bean.getDesc());
