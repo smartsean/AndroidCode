@@ -10,6 +10,7 @@
 
 ### 3、[EventBus使用](https://github.com/Seancss/EventBusTest)
 
+### 4、[RecyclerDemo的简单使用](https://github.com/Seancss/AndroidCode/blob/master/app/src/main/java/com/sean/demo/ui/a/activity/RecyclerDemoActivity.java)
 ## 工具类
 
 ### BitmapUtil [转换bitmap](https://github.com/Seancss/AndroidCode/blob/master/seanlib/src/main/java/com/sean/lib/utils/BitmapUtil.java)
