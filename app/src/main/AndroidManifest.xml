@@ -30,7 +30,8 @@
             android:name=".ui.BaseActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.a.activity.TimeLineActivity"></activity>
+        <activity android:name=".ui.a.activity.TimeLineActivity" />
+        <activity android:name=".ui.a.activity.RecyclerDemoActivity"></activity>
     </application>
 
 </manifest>
