@@ -6,9 +6,44 @@
     android:layout_height="match_parent"
     tools:context="com.sean.demo.ui.a.activity.RecyclerDemoActivity">
 
+    <LinearLayout
+        android:id="@+id/change_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/listview" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="GridView" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="横向GV" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="瀑布流" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_demo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/change_ll" />
 
 </RelativeLayout>

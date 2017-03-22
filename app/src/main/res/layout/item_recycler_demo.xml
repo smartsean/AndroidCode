@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:background="@color/white"
@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingLeft="20dp"
             android:text="这是第一个人" />
     </LinearLayout>
 

@@ -16,6 +16,7 @@
     <string name="fragment_c_title">FragmentC页面</string>
     <string name="fragment_d_title">FragmentD页面</string>
     <string name="handler_use">Handler使用</string>
+    <string name="listview">ListView</string>
 
 
 </resources>
