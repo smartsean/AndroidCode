@@ -95,4 +95,5 @@ dependencies {
     //Android-Iconics - used to provide an easy API for icons
     compile 'com.mikepenz:iconics-core:2.8.0@aar'
 
+    compile project(path: ':seanlib')
 }

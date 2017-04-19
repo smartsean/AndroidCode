@@ -35,7 +35,6 @@ public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapte
 
         ImageView imageId;
         TextView desc;
-
         public ViewHolder(View itemView) {
             super(itemView);
             imageId = (ImageView) itemView.findViewById(R.id.item_image);

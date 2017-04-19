@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/AndroidCode.iml" filepath="$PROJECT_DIR$/AndroidCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/seanjavalib/seanjavalib.iml" filepath="$PROJECT_DIR$/seanjavalib/seanjavalib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/seanjavalib/seanjavalib.iml" filepath="$PROJECT_DIR$/seanjavalib/seanjavalib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/seanlib/seanlib.iml" filepath="$PROJECT_DIR$/seanlib/seanlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/seanlib/seanlib.iml" filepath="$PROJECT_DIR$/seanlib/seanlib.iml" />
     </modules>
   </component>

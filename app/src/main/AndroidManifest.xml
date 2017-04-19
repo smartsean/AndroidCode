@@ -31,7 +31,8 @@
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.a.activity.TimeLineActivity" />
-        <activity android:name=".ui.a.activity.RecyclerDemoActivity"></activity>
+        <activity android:name=".ui.a.activity.RecyclerDemoActivity" />
+        <activity android:name=".ui.a.activity.MyDialogActivity"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ import com.sean.demo.adapter.common.CommonListModel;
 import com.sean.demo.ui.BaseSupportFragment;
 import com.sean.demo.ui.a.activity.EventBusActivity;
 import com.sean.demo.ui.a.activity.HandlerTestActivity;
+import com.sean.demo.ui.a.activity.MyDialogActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
 import com.sean.demo.ui.a.activity.TimeLineActivity;
 
@@ -56,6 +57,7 @@ public class AFragment extends BaseSupportFragment {
         commonListModelList.add(new CommonListModel("EventBus", EventBusActivity.class));
         commonListModelList.add(new CommonListModel("时间线", TimeLineActivity.class));
         commonListModelList.add(new CommonListModel("RecyclerDemo", RecyclerDemoActivity.class));
+        commonListModelList.add(new CommonListModel("自定义Dialog", MyDialogActivity.class));
     }
 
     private void initRecycler() {
