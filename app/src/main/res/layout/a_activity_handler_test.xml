@@ -57,7 +57,7 @@
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="最常用的子线程发送，主线程接收" />
+        android:text="通过View的post方法更新ui" />
 
     <Button
         android:id="@+id/button6"

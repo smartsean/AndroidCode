@@ -27,6 +27,7 @@ public class HandlerTestActivity extends BaseActivity {
     Toolbar handlerTb;
     private String message = "Sean";
     private Button button4;
+    private Button button5;
 
 
     @Override
@@ -70,6 +71,7 @@ public class HandlerTestActivity extends BaseActivity {
     private void initView() {
         show = (TextView) findViewById(R.id.show);
         button4 = (Button) findViewById(R.id.button4);
+        button5 = (Button) findViewById(R.id.button5);
         button4.performClick();// 写在OnResume之前执行的话，可以在子线程更新UI线程
 
 
@@ -151,11 +153,14 @@ public class HandlerTestActivity extends BaseActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Message msg = new Message();
-                        msg.what = 3;
+                        Log.d(TAG, "run: "+Thread.currentThread().getName());
 
-                        msg.obj = "测试子线程发送消息，在主线程更新ui======>>>3";
-                        mHandler.sendMessage(msg);
+                        button5.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                show.setText("我是通过View的post方法更新ui的");
+                            }
+                        });
                     }
                 }).start();
             }
