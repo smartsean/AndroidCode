@@ -21,6 +21,7 @@ import com.sean.demo.ui.a.activity.HandlerTestActivity;
 import com.sean.demo.ui.a.activity.MyDialogActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
 import com.sean.demo.ui.a.activity.TimeLineActivity;
+import com.sean.demo.ui.a.activity.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,7 @@ public class AFragment extends BaseSupportFragment {
         commonListModelList.add(new CommonListModel("时间线", TimeLineActivity.class));
         commonListModelList.add(new CommonListModel("RecyclerDemo", RecyclerDemoActivity.class));
         commonListModelList.add(new CommonListModel("自定义Dialog", MyDialogActivity.class));
+        commonListModelList.add(new CommonListModel("WebView", WebViewActivity.class));
     }
 
     private void initRecycler() {

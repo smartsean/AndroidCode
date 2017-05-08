@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sean.demo">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,7 +34,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ui.a.activity.TimeLineActivity" />
         <activity android:name=".ui.a.activity.RecyclerDemoActivity" />
-        <activity android:name=".ui.a.activity.MyDialogActivity"></activity>
+        <activity android:name=".ui.a.activity.MyDialogActivity" />
+        <activity android:name=".ui.a.activity.WebViewActivity"></activity>
     </application>
 
 </manifest>
