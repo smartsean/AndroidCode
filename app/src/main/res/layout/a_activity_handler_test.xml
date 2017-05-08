@@ -33,36 +33,42 @@
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1" />
+        android:text="使用post方法直接更新ui线程" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2" />
+        android:text="使用runOnUiThread更新ui线程" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="3" />
+        android:text="点我会蹦，我是在子线程更新ui的" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="4" />
+        android:text="点我会蹦，但是在onResume之前点击不会蹦" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="5" />
+        android:text="最常用的子线程发送，主线程接收" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="6" />
+        android:text="子线程发送，子线程接收，再发送，在主线程接收" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/handler" />
 
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,8 @@ public class HandlerTestActivity extends BaseActivity {
     @BindView(R.id.handler_tb)
     Toolbar handlerTb;
     private String message = "Sean";
-    Handler handler;
+    private Button button4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +37,11 @@ public class HandlerTestActivity extends BaseActivity {
         setToolBar(R.id.handler_tb);
         setToolBarMenuOnclick(new HandlerMenuClickListener());
         setBackArrow();
-        handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                show.setText("msgWhat " + msg.what + ";" + "msObj" + msg.obj);
-            }
-        };
     }
 
+    /**
+     * 用于调用Toolbar菜单栏的点击事件
+     */
     class HandlerMenuClickListener implements Toolbar.OnMenuItemClickListener {
 
         @Override
@@ -56,6 +55,12 @@ public class HandlerTestActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 创建菜单栏
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_handler, menu);
@@ -64,7 +69,9 @@ public class HandlerTestActivity extends BaseActivity {
 
     private void initView() {
         show = (TextView) findViewById(R.id.show);
-        handler = new Handler();
+        button4 = (Button) findViewById(R.id.button4);
+        button4.performClick();// 写在OnResume之前执行的话，可以在子线程更新UI线程
+
 
         /**
          *使用post方法直接更新ui线程
@@ -76,7 +83,7 @@ public class HandlerTestActivity extends BaseActivity {
                     @Override
                     public void run() {
                         message = "mySean1";
-                        handler.post(new Runnable() {
+                        mHandler.post(new Runnable() {
                             @Override
                             public void run() {
                                 show.setText(message);
@@ -125,18 +132,12 @@ public class HandlerTestActivity extends BaseActivity {
 
 
         /**
-         * 此种方式能在onResume中或者其之前调用，因为zaionResume中会初始化控制ui线程更新ui的一些控制
+         * 此种方式能在onResume中或者其之前调用，因为在onResume中会初始化控制ui线程更新ui的一些控制
          */
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread() {
-                    @Override
-                    public void run() {
-                        super.run();
-                        show.setText("111");
-                    }
-                }.start();
+                beforeOnResumeClick();
             }
         });
 
@@ -151,16 +152,17 @@ public class HandlerTestActivity extends BaseActivity {
                     @Override
                     public void run() {
                         Message msg = new Message();
-                        msg.what = 1;
-                        msg.obj = "测试子线程发送消息，在主线程更新ui";
-                        handler.sendMessage(msg);
+                        msg.what = 3;
+
+                        msg.obj = "测试子线程发送消息，在主线程更新ui======>>>3";
+                        mHandler.sendMessage(msg);
                     }
                 }).start();
             }
         });
 
         /**
-         * 子线程中创建Handler发送消息，在子线程中的Handler中处理
+         * 子线程中创建Handler发送消息，在子线程中的Handler中处理,然后发送给主线程去更新ui
          */
         findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +175,13 @@ public class HandlerTestActivity extends BaseActivity {
                         handler1 = new Handler() {
                             @Override
                             public void handleMessage(Message msg) {
-                                Log.d(TAG, "handleMessage: " + msg.obj);
+                                Log.d(TAG, "handleMessage: " + "\nwhat = " + msg.what + "\nobj = " + msg.obj);
+                                if (msg.what == 1) {
+                                    Message message = new Message();
+                                    message.what = 4;
+                                    message.obj = "测试子线程发送消息，在主线程更新ui======>>>4";
+                                    mHandler.sendMessage(message);
+                                }
                             }
                         };
                         Message msg = new Message();
@@ -186,5 +194,67 @@ public class HandlerTestActivity extends BaseActivity {
 
             }
         });
+
+
+        /**
+         * 使用主线程中的handler发送消息，然后在主线程中更新ui
+         */
+        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message message = new Message();
+                        message.what = 1;
+                        message.obj = "测试子线程发送消息，在主线程更新ui======>>>1";
+                        mHandler.sendMessage(message);
+                    }
+                }).start();
+            }
+        });
+
+        /**
+         * 使用主线程中的handler发送消息，然后在主线程中更新ui
+         */
+        findViewById(R.id.button7).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message message = new Message();
+                        message.what = 2;
+                        message.obj = "测试子线程发送消息，在主线程更新ui======>>>2";
+                        mHandler.sendMessage(message);
+                    }
+                }).start();
+                return true;
+            }
+        });
+    }
+
+    /**
+     * 主线程中的Handler
+     */
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            show.setText("msg.what = " + msg.what + " 的时候 ： \n" + "msg.obj = " + msg.obj.toString());
+        }
+    };
+
+    /**
+     * 测试在onResume之前调用Thread更新ui
+     */
+    private void beforeOnResumeClick() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                show.setText("测试在onResume之前调用Thread更新ui");
+            }
+        }.start();
     }
 }

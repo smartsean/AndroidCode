@@ -17,6 +17,7 @@
     <string name="fragment_d_title">FragmentD页面</string>
     <string name="handler_use">Handler使用</string>
     <string name="listview">ListView</string>
+    <string name="handler">Handler发送不同的what获取消息</string>
 
 
 </resources>
