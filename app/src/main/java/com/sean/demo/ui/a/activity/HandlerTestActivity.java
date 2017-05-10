@@ -33,7 +33,7 @@ public class HandlerTestActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.a_activity_handler_test);
-        initView();
+        initView1();
         setToolBar(R.id.handler_tb);
         setToolBarMenuOnclick(new HandlerMenuClickListener());
         setBackArrow();
@@ -67,7 +67,7 @@ public class HandlerTestActivity extends BaseActivity {
         return true;
     }
 
-    private void initView() {
+    private void initView1() {
         show = (TextView) findViewById(R.id.show);
         button4 = (Button) findViewById(R.id.button4);
         button4.performClick();// 写在OnResume之前执行的话，可以在子线程更新UI线程

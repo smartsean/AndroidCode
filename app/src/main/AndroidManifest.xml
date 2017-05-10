@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sean.demo">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -32,10 +32,40 @@
             android:name=".ui.BaseActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.a.activity.TimeLineActivity" />
-        <activity android:name=".ui.a.activity.RecyclerDemoActivity" />
-        <activity android:name=".ui.a.activity.MyDialogActivity" />
-        <activity android:name=".ui.a.activity.WebViewActivity"></activity>
+        <activity
+            android:name=".ui.a.activity.TimeLineActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.RecyclerDemoActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.MyDialogActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.WebViewActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.AsyncTaskActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.HandlerThreadActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.IntentServiceActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.a.activity.ThreadPoolActivity"
+            android:configChanges="screenSize"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".ui.a.activity.UploadImgService" />
     </application>
 
 </manifest>

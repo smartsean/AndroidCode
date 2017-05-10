@@ -50,10 +50,10 @@ public class MainActivity extends BaseActivity {
         setToolBarMenuOnclick(new mainToolBarMenuClick());
         ButterKnife.bind(this);
         context = MainActivity.this;
-        initView();
+        initView1();
     }
 
-    private void initView() {
+    private void initView1() {
         indexTabA.setOnCheckedChangeListener(new OnNaviCheckChangeListener(FRAGMENT_FLAG_A));
         indexTabB.setOnCheckedChangeListener(new OnNaviCheckChangeListener(FRAGMENT_FLAG_B));
         indexTabC.setOnCheckedChangeListener(new OnNaviCheckChangeListener(FRAGMENT_FLAG_C));

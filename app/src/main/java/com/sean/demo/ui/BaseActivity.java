@@ -38,7 +38,7 @@ public class BaseActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    private void initView() {
+    protected void initView() {
         commonTitleTv = (TextView) findViewById(R.id.common_title_tv);
         commonTitleTb = (Toolbar) findViewById(R.id.common_title_tb);
         content = (RelativeLayout) findViewById(R.id.content);
