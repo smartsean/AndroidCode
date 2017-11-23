@@ -6,7 +6,7 @@ android {
     //开发时采用的编译版本
     compileSdkVersion 25
     //编译时采用的编译工具版本
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
 
     //项目的默认配置信息
     defaultConfig {
@@ -26,7 +26,6 @@ android {
 
     //构建的类型方式
     buildTypes {
-
 
         //方式为release，一般这种是定义为测试包渠道
         debug {
@@ -49,6 +48,7 @@ android {
 //项目所添加的依赖
 dependencies {
     // 编译libs目录下的所有jar包（编译的文件树）
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

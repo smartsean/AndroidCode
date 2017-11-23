@@ -17,12 +17,14 @@ import com.sean.demo.adapter.common.CommonListAdapter;
 import com.sean.demo.adapter.common.CommonListModel;
 import com.sean.demo.ui.BaseSupportFragment;
 import com.sean.demo.ui.a.activity.AsyncTaskActivity;
+import com.sean.demo.ui.a.activity.CircleViewActivity;
 import com.sean.demo.ui.a.activity.EventBusActivity;
 import com.sean.demo.ui.a.activity.HandlerTestActivity;
 import com.sean.demo.ui.a.activity.HandlerThreadActivity;
 import com.sean.demo.ui.a.activity.IntentServiceActivity;
 import com.sean.demo.ui.a.activity.MyDialogActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
+import com.sean.demo.ui.a.activity.RecyclerItemDividerActivity;
 import com.sean.demo.ui.a.activity.ThreadPoolActivity;
 import com.sean.demo.ui.a.activity.TimeLineActivity;
 import com.sean.demo.ui.a.activity.WebViewActivity;
@@ -68,6 +70,8 @@ public class AFragment extends BaseSupportFragment {
         commonListModelList.add(new CommonListModel("IntentService", IntentServiceActivity.class));
         commonListModelList.add(new CommonListModel("HandlerThread", HandlerThreadActivity.class));
         commonListModelList.add(new CommonListModel("ThreadPool", ThreadPoolActivity.class));
+        commonListModelList.add(new CommonListModel("自定义View-何家成", CircleViewActivity.class));
+        commonListModelList.add(new CommonListModel("RecyclerView的分割线", RecyclerItemDividerActivity.class));
     }
 
     private void initRecycler() {
