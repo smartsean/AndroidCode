@@ -9,6 +9,9 @@ import com.sean.demo.ui.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * @author soso
+ */
 public class TimeLineActivity extends BaseActivity {
 
     @BindView(R.id.timeline_rv)

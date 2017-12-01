@@ -14,6 +14,7 @@ import android.graphics.drawable.shapes.Shape;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,7 +27,7 @@ import com.sean.lib.utils.ErrorLogUtil;
  * Created by Fred Zhao on 2017/11/2.
  */
 
-public class RecyclerDivider extends RecyclerView.ItemDecoration {
+public class RecyclerDivider extends DividerItemDecoration {
 
 
     public static final int HORIZONTAL = LinearLayout.HORIZONTAL;
