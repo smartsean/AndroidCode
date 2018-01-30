@@ -8,7 +8,9 @@ import android.widget.Toast;
 
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
-
+/**
+ * @author  SmartSean
+ */
 public class EventBusActivity extends BaseActivity {
 
     @Override

@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="44dp"
-    android:background="#fff"
-    app:cardBackgroundColor="#87CEFA"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="8dp"
-    app:cardElevation="6dp">
+    android:background="@color/white"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/name"
@@ -16,6 +14,5 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:textColor="@color/white"
         android:textSize="20sp" />
 </android.support.v7.widget.CardView>

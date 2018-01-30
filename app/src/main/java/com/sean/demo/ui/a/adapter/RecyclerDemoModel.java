@@ -1,9 +1,8 @@
 package com.sean.demo.ui.a.adapter;
 
 /**
- * Created by Sean on 2017/3/22.
+ * @author  SmartSean
  */
-
 public class RecyclerDemoModel {
     private int imageId;
     private String desc;

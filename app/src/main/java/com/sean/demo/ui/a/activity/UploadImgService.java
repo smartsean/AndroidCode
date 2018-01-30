@@ -10,16 +10,12 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
- * Created by Sean on 2017/5/10 14:51.
+ * @author  SmartSean
  */
-
 public class UploadImgService extends IntentService {
 
     private static final String ACTION_UPLOAD_IMG = "com.sean.demo.ui.a.activity.action.UPLOAD_IMAGE";
     public static final String EXTRA_IMG_PATH = "com.sean.demo.ui.a.activity.extra.IMG_PATH";
-
-    private int startId;
-
 
     public static void startUploadImg(Context context, String path) {
         Intent intent = new Intent(context, UploadImgService.class);
@@ -49,7 +45,6 @@ public class UploadImgService extends IntentService {
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
-        this.startId = startId;
     }
 
     private void handleUploadImg(String path) {
@@ -63,21 +58,16 @@ public class UploadImgService extends IntentService {
             intent.putExtra(EXTRA_IMG_PATH, path);
             sendBroadcast(intent);
             Log.i("seanUploadImgService", Thread.currentThread().getName() + "<<<===end");
-
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.BACKGROUND )
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onEventMainThread(TestMsg1 testMsg) {
-
         if (testMsg != null) {
             if (testMsg.getName().equals("cancel")) ;
             Log.d("MainActivity", "你收到的名字为： " + testMsg.getName());
-
-//            stopSelf();
         }
     }
 
@@ -85,16 +75,11 @@ public class UploadImgService extends IntentService {
     public void onCreate() {
         super.onCreate();
         EventBus.getDefault().register(this);
-
-        Log.e("TAG", "onCreateIntentService");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-        Log.e("TAG", "onDestroyIntentService");
     }
-
-
 }

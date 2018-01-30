@@ -18,7 +18,9 @@ import java.util.concurrent.Executors;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+ * @author  SmartSean
+ */
 public class ThreadPoolActivity extends BaseActivity {
 
     @BindView(R.id.btn1)

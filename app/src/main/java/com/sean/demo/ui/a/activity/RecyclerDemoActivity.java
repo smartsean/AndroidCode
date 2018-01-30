@@ -20,7 +20,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+ * @author  SmartSean
+ */
 public class RecyclerDemoActivity extends BaseActivity {
 
     @BindView(R.id.recycler_demo)

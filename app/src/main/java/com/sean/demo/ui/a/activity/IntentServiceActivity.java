@@ -18,7 +18,9 @@ import com.sean.demo.ui.BaseActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
+/**
+ * @author  SmartSean
+ */
 public class IntentServiceActivity extends BaseActivity {
 
     public static final String UPLOAD_RESULT = "com.sean.demo.ui.a.activity.UPLOAD_RESULT";

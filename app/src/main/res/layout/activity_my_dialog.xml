@@ -13,17 +13,29 @@
 
 
     <Button
-        android:text="dialog"
         android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="警告框" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认取消框" />
 
 
     <Button
-        android:text="PupupBottomDialog"
-        android:id="@+id/button2"
+        android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="带输入的弹窗" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="列表选择框" />
 
 
 </LinearLayout>

@@ -15,7 +15,9 @@ import com.sean.demo.ui.BaseActivity;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
+/**
+ * @author  SmartSean
+ */
 public class AsyncTaskActivity extends BaseActivity {
 
     private Context context;
