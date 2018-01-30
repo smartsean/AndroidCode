@@ -7,13 +7,14 @@ import android.support.v7.widget.RecyclerView;
 
 import com.sean.demo.R;
 import com.sean.demo.ui.a.adapter.RecyclerItemDividerAdapter;
-import com.sean.demo.widget.RecyclerDivider;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.smartsean.lib.widget.recyclerview.RecyclerItemDivider;
+
 /**
- * @author soso
+ * @author  SmartSean
  */
 public class RecyclerItemDividerActivity extends AppCompatActivity {
 
@@ -31,6 +32,6 @@ public class RecyclerItemDividerActivity extends AppCompatActivity {
         RecyclerItemDividerAdapter adapter = new RecyclerItemDividerAdapter(list, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new RecyclerDivider(this,RecyclerDivider.VERTICAL));
+        recyclerView.addItemDecoration(new RecyclerItemDivider(this, RecyclerItemDivider.VERTICAL));
     }
 }

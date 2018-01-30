@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.sean.demo.R;
-import com.sean.lib.dialog.MyDialog;
-import com.sean.lib.dialog.PopupBottomDialog;
-
+/**
+ * @author  SmartSean
+ */
 public class MyDialogActivity extends AppCompatActivity {
 
 
@@ -22,13 +22,13 @@ public class MyDialogActivity extends AppCompatActivity {
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MyDialog(context).show();
+//                new MyDialog(context).show();
             }
         });
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PopupBottomDialog(context).show();
+//                new PopupBottomDialog(context).show();
             }
         });
     }

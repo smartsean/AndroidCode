@@ -33,10 +33,6 @@
             android:configChanges="screenSize"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.a.activity.TimeLineActivity"
-            android:configChanges="screenSize"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".ui.a.activity.RecyclerDemoActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait"/>
@@ -45,7 +41,7 @@
             android:configChanges="screenSize"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.a.activity.WebViewActivity"
+            android:name=".ui.a.activity.webview.WebViewActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait"/>
         <activity
@@ -67,8 +63,6 @@
 
         <service android:name=".ui.a.activity.UploadImgService"/>
 
-        <activity android:name=".ui.a.activity.CircleViewActivity">
-        </activity>
         <activity android:name=".ui.a.activity.RecyclerItemDividerActivity">
         </activity>
     </application>

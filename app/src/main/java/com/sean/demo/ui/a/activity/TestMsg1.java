@@ -1,9 +1,8 @@
 package com.sean.demo.ui.a.activity;
 
 /**
- * Created by Sean on 2017/5/10 15:41.
+ * @author  SmartSean
  */
-
 public class TestMsg1 {
     private String name;
 

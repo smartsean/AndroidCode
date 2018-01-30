@@ -13,9 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by smartsean on 17/11/23 16:06.
+ * @author  SmartSean
  */
-
 public class TImeLineAdapter extends RecyclerView.Adapter<TImeLineAdapter.Viewholder> {
     private LayoutInflater inflater;
     private ArrayList<HashMap<String, Object>> listItem;

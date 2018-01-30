@@ -1,4 +1,4 @@
-package com.sean.lib.utils;
+package com.sean.demo.utils;
 
 import android.app.Activity;
 import android.content.Context;

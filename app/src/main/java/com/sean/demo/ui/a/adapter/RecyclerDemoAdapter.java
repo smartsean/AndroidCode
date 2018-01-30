@@ -14,13 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Sean on 2017/3/22.
+ * @author  SmartSean
  */
-
 public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapter.ViewHolder> {
 
     private List<Integer> mHeights;
-
 
     public void getRandomHeight(List<RecyclerDemoModel> mList){
         mHeights = new ArrayList<>();

@@ -17,7 +17,6 @@ import com.sean.demo.adapter.common.CommonListAdapter;
 import com.sean.demo.adapter.common.CommonListModel;
 import com.sean.demo.ui.BaseSupportFragment;
 import com.sean.demo.ui.a.activity.AsyncTaskActivity;
-import com.sean.demo.ui.a.activity.CircleViewActivity;
 import com.sean.demo.ui.a.activity.EventBusActivity;
 import com.sean.demo.ui.a.activity.HandlerTestActivity;
 import com.sean.demo.ui.a.activity.HandlerThreadActivity;
@@ -26,8 +25,7 @@ import com.sean.demo.ui.a.activity.MyDialogActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
 import com.sean.demo.ui.a.activity.RecyclerItemDividerActivity;
 import com.sean.demo.ui.a.activity.ThreadPoolActivity;
-import com.sean.demo.ui.a.activity.TimeLineActivity;
-import com.sean.demo.ui.a.activity.WebViewActivity;
+import com.sean.demo.ui.a.activity.webview.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,18 +58,16 @@ public class AFragment extends BaseSupportFragment {
      * 初始化主页显示数据
      */
     private void initData() {
-        commonListModelList.add(new CommonListModel("Handler", HandlerTestActivity.class));
+        commonListModelList.add(new CommonListModel("Handler的使用", HandlerTestActivity.class));
         commonListModelList.add(new CommonListModel("EventBus", EventBusActivity.class));
-        commonListModelList.add(new CommonListModel("时间线", TimeLineActivity.class));
         commonListModelList.add(new CommonListModel("RecyclerDemo", RecyclerDemoActivity.class));
+        commonListModelList.add(new CommonListModel("RecyclerView的分割线", RecyclerItemDividerActivity.class));
         commonListModelList.add(new CommonListModel("自定义Dialog", MyDialogActivity.class));
         commonListModelList.add(new CommonListModel("WebView", WebViewActivity.class));
         commonListModelList.add(new CommonListModel("AsyncTask", AsyncTaskActivity.class));
         commonListModelList.add(new CommonListModel("IntentService", IntentServiceActivity.class));
         commonListModelList.add(new CommonListModel("HandlerThread", HandlerThreadActivity.class));
         commonListModelList.add(new CommonListModel("ThreadPool", ThreadPoolActivity.class));
-        commonListModelList.add(new CommonListModel("自定义View-何家成", CircleViewActivity.class));
-        commonListModelList.add(new CommonListModel("RecyclerView的分割线", RecyclerItemDividerActivity.class));
     }
 
     private void initRecycler() {

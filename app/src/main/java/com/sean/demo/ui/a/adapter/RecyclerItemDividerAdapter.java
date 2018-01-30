@@ -12,9 +12,8 @@ import com.sean.demo.R;
 import java.util.List;
 
 /**
- * Created by smartsean on 17/11/23 15:45.
+ * @author  SmartSean
  */
-
 public class RecyclerItemDividerAdapter extends RecyclerView.Adapter<RecyclerItemDividerAdapter.ViewHolder> {
 
     private List<String> list;

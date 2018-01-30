@@ -1,4 +1,4 @@
-package com.sean.demo.ui.a.activity;
+package com.sean.demo.ui.a.activity.webview;
 
 import android.os.Environment;
 import android.util.Log;

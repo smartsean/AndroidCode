@@ -1,4 +1,4 @@
-package com.sean.lib.utils;
+package com.sean.demo.utils;
 
 /**
  * Created by sean on 2017/3/15.

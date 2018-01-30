@@ -17,7 +17,9 @@ import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
 
 import butterknife.BindView;
-
+/**
+ * @author  SmartSean
+ */
 public class HandlerTestActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";

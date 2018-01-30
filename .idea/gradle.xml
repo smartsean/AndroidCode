@@ -10,8 +10,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/seanjavalib" />
-            <option value="$PROJECT_DIR$/seanlib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

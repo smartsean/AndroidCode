@@ -4,9 +4,8 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * Created by Sean on 2017/4/28.
+ * @author  SmartSean
  */
-
 public class WebHost {
     public Context context;
 

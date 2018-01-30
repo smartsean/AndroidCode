@@ -1,4 +1,4 @@
-package com.sean.demo.ui.a.activity;
+package com.sean.demo.ui.a.activity.webview;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,10 +16,13 @@ import android.widget.TextView;
 
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
+import com.sean.demo.ui.a.activity.WebHost;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author  SmartSean
+ */
 public class WebViewActivity extends BaseActivity {
 
 

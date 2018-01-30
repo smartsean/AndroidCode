@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
-
+/**
+ * @author  SmartSean
+ */
 public class HandlerThreadActivity extends BaseActivity {
 
 
