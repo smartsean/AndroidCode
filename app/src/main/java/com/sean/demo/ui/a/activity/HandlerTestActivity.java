@@ -1,5 +1,6 @@
 package com.sean.demo.ui.a.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -169,7 +170,7 @@ public class HandlerTestActivity extends BaseActivity {
         });
 
         /**
-         * 子线程中创建Handler发送消息，在子线程中的Handler中处理,然后发送给主线程去更新ui
+         * 子线程中创建Handler（handler1）发送消息，在子线程中的Handler（handler1）中处理,然后发送给主线程（mHandler）去更新ui
          */
         findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,7 +240,25 @@ public class HandlerTestActivity extends BaseActivity {
                 return true;
             }
         });
+
+        /**
+         * 消除handler的内存泄漏
+         */
+        findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HandlerTestActivity.this,SafeHandlerDemoActivity.class));
+            }
+        });
     }
+
+
+    private Handler mHandler1 = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            return false;
+        }
+    });
 
     /**
      * 主线程中的Handler

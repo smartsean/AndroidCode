@@ -10,4 +10,29 @@
         <!--是否有动画效果-->
         <attr name="is_smooth_progress" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="ArcProgressBar">
+        <!--文字-->
+        <attr name="center_text" format="string"></attr>
+        <attr name="center_text_size" format="dimension"></attr>
+        <attr name="center_text_color" format="color"></attr>
+        <!--图标-->
+        <attr name="center_icon" format="reference"></attr>
+        <!--内圆背景色-->
+        <attr name="inner_background_color" format="color"></attr>
+        <!--内圆半径-->
+        <attr name="inner_rad_radius" format="dimension"></attr>
+        <!--外圆弧线颜色-->
+        <attr name="outer_red_color" format="color"></attr>
+        <!--外圆半径-->
+        <attr name="outer_rad_radius" format="dimension"></attr>
+        <!--外环线的背景色-->
+        <attr name="outer_line_unreach_color" format="color"></attr>
+        <!--外环线的个数-->
+        <attr name="outer_line_number" format="integer"></attr>
+        <!--是否需要外环刻度线的背景-->
+        <attr name="is_show_outer_line_bg" format="boolean"></attr>
+        <!--是否有动画效果-->
+        <attr name="is_smooth" format="boolean" />
+    </declare-styleable>
 </resources>

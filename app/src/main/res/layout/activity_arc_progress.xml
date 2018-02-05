@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.sean.demo.widget.progress.ArcProgressBar
+        android:id="@+id/progress_apb"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        app:outer_line_number="100"
+        app:center_text="时长统计"
+        app:center_text_size="14sp" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="比例6：3：1" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="比例3：6：1" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="比例1：3：6" />
+
+</LinearLayout>

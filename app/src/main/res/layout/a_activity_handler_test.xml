@@ -71,4 +71,10 @@
         android:layout_height="wrap_content"
         android:text="@string/handler" />
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="消除使用Handler的内存泄漏" />
+
 </LinearLayout>

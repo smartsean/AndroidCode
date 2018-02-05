@@ -63,8 +63,11 @@
 
         <service android:name=".ui.a.activity.UploadImgService" />
 
-        <activity android:name=".ui.a.activity.RecyclerItemDividerActivity"></activity>
-        <activity android:name=".ui.a.activity.ProgressViewActivity"></activity>
+        <activity android:name=".ui.a.activity.RecyclerItemDividerActivity" />
+        <activity android:name=".ui.a.activity.ProgressViewActivity" />
+        <activity android:name=".ui.a.activity.ArcProgressActivity" />
+        <activity android:name=".ui.a.activity.webview.ViewDispatchActivity" />
+        <activity android:name=".ui.a.activity.SafeHandlerDemoActivity"></activity>
     </application>
 
 </manifest>

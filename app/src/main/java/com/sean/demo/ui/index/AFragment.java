@@ -16,6 +16,7 @@ import com.sean.demo.R;
 import com.sean.demo.adapter.common.CommonListAdapter;
 import com.sean.demo.adapter.common.CommonListModel;
 import com.sean.demo.ui.BaseSupportFragment;
+import com.sean.demo.ui.a.activity.ArcProgressActivity;
 import com.sean.demo.ui.a.activity.AsyncTaskActivity;
 import com.sean.demo.ui.a.activity.EventBusActivity;
 import com.sean.demo.ui.a.activity.HandlerTestActivity;
@@ -26,6 +27,7 @@ import com.sean.demo.ui.a.activity.ProgressViewActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
 import com.sean.demo.ui.a.activity.RecyclerItemDividerActivity;
 import com.sean.demo.ui.a.activity.ThreadPoolActivity;
+import com.sean.demo.ui.a.activity.webview.ViewDispatchActivity;
 import com.sean.demo.ui.a.activity.webview.WebViewActivity;
 
 import java.util.ArrayList;
@@ -70,6 +72,8 @@ public class AFragment extends BaseSupportFragment {
         commonListModelList.add(new CommonListModel("HandlerThread", HandlerThreadActivity.class));
         commonListModelList.add(new CommonListModel("ThreadPool", ThreadPoolActivity.class));
         commonListModelList.add(new CommonListModel("自定义View无值进度条", ProgressViewActivity.class));
+        commonListModelList.add(new CommonListModel("自定义View弧形进度条", ArcProgressActivity.class));
+        commonListModelList.add(new CommonListModel("事件分发", ViewDispatchActivity.class));
     }
 
     private void initRecycler() {
