@@ -8,3 +8,4 @@
 
 ### 1、[在BaseActivity中封装Toolbar](https://github.com/Seancss/AndroidCode/blob/master/app/src/main/java/com/sean/demo/ui/BaseActivity.java)
 
+### 2、[自定义View LineProgressBar 使用](https://github.com/smartsean/AndroidCode/blob/master/app/src/main/java/com/sean/demo/ui/a/activity/ProgressViewActivity.java)
