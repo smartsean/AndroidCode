@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <com.sean.demo.widget.progress.LineProgressBar
+        android:id="@+id/progress_lpb"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        app:is_smooth_progress="false"
+        app:progress="20"
+        app:progress_color="#71db77"
+        app:progress_line_color="#e6e6e6" />
+
+
+    <Switch
+        android:id="@+id/toggle_s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="是否带动画效果" />
+
+    <EditText
+        android:id="@+id/value_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入进度"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确定" />
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineProgressBar">
+        <!--进度条颜色-->
+        <attr name="progress_color" format="color" />
+        <!--中间线的颜色-->
+        <attr name="progress_line_color" format="color" />
+        <!--进度条的值-->
+        <attr name="progress" format="integer" />
+        <!--是否有动画效果-->
+        <attr name="is_smooth_progress" format="boolean" />
+    </declare-styleable>
+</resources>

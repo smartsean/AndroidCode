@@ -22,6 +22,7 @@ import com.sean.demo.ui.a.activity.HandlerTestActivity;
 import com.sean.demo.ui.a.activity.HandlerThreadActivity;
 import com.sean.demo.ui.a.activity.IntentServiceActivity;
 import com.sean.demo.ui.a.activity.MyDialogActivity;
+import com.sean.demo.ui.a.activity.ProgressViewActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
 import com.sean.demo.ui.a.activity.RecyclerItemDividerActivity;
 import com.sean.demo.ui.a.activity.ThreadPoolActivity;
@@ -68,6 +69,7 @@ public class AFragment extends BaseSupportFragment {
         commonListModelList.add(new CommonListModel("IntentService", IntentServiceActivity.class));
         commonListModelList.add(new CommonListModel("HandlerThread", HandlerThreadActivity.class));
         commonListModelList.add(new CommonListModel("ThreadPool", ThreadPoolActivity.class));
+        commonListModelList.add(new CommonListModel("自定义View无值进度条", ProgressViewActivity.class));
     }
 
     private void initRecycler() {
