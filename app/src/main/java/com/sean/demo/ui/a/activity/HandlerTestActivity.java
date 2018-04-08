@@ -18,45 +18,195 @@ import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
- * @author  SmartSean
+ * @author SmartSean
  */
 public class HandlerTestActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
 
-    TextView show;
     @BindView(R.id.handler_tb)
     Toolbar handlerTb;
-    private String message = "Sean";
-    private Button button4;
-    private Button button5;
+    @BindView(R.id.button1)
+    Button mButton1;
+    @BindView(R.id.button2)
+    Button mButton2;
+    @BindView(R.id.button3)
+    Button mButton3;
+    @BindView(R.id.button5)
+    Button mButton5;
+    @BindView(R.id.button6)
+    Button mButton6;
+    @BindView(R.id.button7)
+    Button mButton7;
+    @BindView(R.id.button8)
+    Button mButton8;
+    @BindView(R.id.button9)
+    Button mButton9;
+
+    TextView mShow;
+    Button mButton4;
+
+    /**
+     * 主线程中的Handler
+     */
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            mShow.setText("msg.what = " + msg.what + " 的时候 ： \n\n" + "msg.obj = " + msg.obj.toString());
+        }
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.a_activity_handler_test);
-        initView1();
+        ButterKnife.bind(this);
         setToolBar(R.id.handler_tb);
         setToolBarMenuOnclick(new HandlerMenuClickListener());
         setBackArrow();
+        init();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     /**
-     * 用于调用Toolbar菜单栏的点击事件
+     * 单独把抽出来是为了测试：可以在子线程中更新 UI（在onResume之前调用点击事件则可以）
+     * 如果使用 ButterKnife 则无效
      */
-    class HandlerMenuClickListener implements Toolbar.OnMenuItemClickListener {
-
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.action_message:
-                    Toast.makeText(HandlerTestActivity.this, "clicked me", Toast.LENGTH_SHORT).show();
-                    break;
+    private void init() {
+        mShow = findViewById(R.id.show);
+        mButton4 = findViewById(R.id.button4);
+        mButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                beforeOnResumeClick();
             }
-            return false;
+        });
+        // 写在OnResume之前执行点击事件的话，可以在子线程更新UI线程
+        mButton4.performClick();
+    }
+
+    @OnClick({R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.button1:
+                //使用post方法直接更新ui线程
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d(TAG, "run: ");
+                                mShow.setText("使用post方法直接更新ui线程");
+                            }
+                        });
+                    }
+                }).start();
+                break;
+            case R.id.button2:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mShow.setText("使用runOnUiThread更新ui线程");
+                            }
+                        });
+                    }
+                }).start();
+                break;
+            case R.id.button3:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mShow.setText("点我会蹦，我是在子线程更新ui的");
+                    }
+                }).start();
+                break;
+            case R.id.button5:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mButton5.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mShow.setText("通过View的post方法更新ui");
+                            }
+                        });
+                    }
+                }).start();
+                break;
+            case R.id.button6:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        Handler threadHandler;
+                        threadHandler = new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                if (msg.what == 1) {
+                                    mHandler.sendMessage(mHandler.obtainMessage(1, "子线程中创建Handler（handler1）发送消息，在子线程中的Handler（handler1）中处理,然后发送给主线程（mHandler）去更新ui"));
+                                }
+                            }
+
+                        };
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        threadHandler.sendMessage(message);
+                        Looper.loop();
+                    }
+                }).start();
+                break;
+            case R.id.button7:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Message message = mHandler.obtainMessage(7, "子线程中发布消息，更新主线程");
+                        mHandler.sendMessage(message);
+                    }
+                }).start();
+                break;
+            case R.id.button8:
+                startActivity(new Intent(HandlerTestActivity.this, SafeHandlerDemoActivity.class));
+                break;
+            case R.id.button9:
+//                startActivity(new Intent(HandlerTestActivity.this, MemoryLeakActivity.class));
+                break;
+            default:
+                return;
         }
+    }
+
+
+    /**
+     * 此种方式能在onResume中或者其之前调用，因为在onResume中会初始化控制ui线程更新ui的一些控制
+     */
+
+
+    /**
+     * 测试在onResume之前调用Thread更新ui
+     */
+    private void beforeOnResumeClick() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                mShow.setText("测试在onResume之前调用Thread更新ui");
+            }
+        }.start();
     }
 
     /**
@@ -71,216 +221,21 @@ public class HandlerTestActivity extends BaseActivity {
         return true;
     }
 
-    private void initView1() {
-        show = (TextView) findViewById(R.id.show);
-        button4 = (Button) findViewById(R.id.button4);
-        button5 = (Button) findViewById(R.id.button5);
-        button4.performClick();// 写在OnResume之前执行的话，可以在子线程更新UI线程
+    /**
+     * 用于调用Toolbar菜单栏的点击事件
+     */
+    class HandlerMenuClickListener implements Toolbar.OnMenuItemClickListener {
 
-
-        /**
-         *使用post方法直接更新ui线程
-         */
-        findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        message = "mySean1";
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                show.setText(message);
-                            }
-                        });
-                    }
-                }).start();
-            }
-        });
-
-        /**
-         *使用runOnUiThread更新ui线程
-         */
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        message = "mySean2";
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                show.setText(message);
-                            }
-                        });
-                    }
-                }).start();
-            }
-        });
-
-        /**
-         * 会崩溃的
-         */
-        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        show.setText("测试非ui线程更新ui");
-                    }
-                }).start();
-            }
-        });
-
-
-        /**
-         * 此种方式能在onResume中或者其之前调用，因为在onResume中会初始化控制ui线程更新ui的一些控制
-         */
-        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                beforeOnResumeClick();
-            }
-        });
-
-
-        /**
-         * 子线程中使用主线程中创建的Handler发送消息，在主线程中的Handler中处理
-         */
-        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.d(TAG, "run: "+Thread.currentThread().getName());
-
-                        button5.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                show.setText("我是通过View的post方法更新ui的");
-                            }
-                        });
-                    }
-                }).start();
-            }
-        });
-
-        /**
-         * 子线程中创建Handler（handler1）发送消息，在子线程中的Handler（handler1）中处理,然后发送给主线程（mHandler）去更新ui
-         */
-        findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Looper.prepare();
-                        Handler handler1;
-                        handler1 = new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                                Log.d(TAG, "handleMessage: " + "\nwhat = " + msg.what + "\nobj = " + msg.obj);
-                                if (msg.what == 1) {
-                                    Message message = new Message();
-                                    message.what = 4;
-                                    message.obj = "测试子线程发送消息，在主线程更新ui======>>>4";
-                                    mHandler.sendMessage(message);
-                                }
-                            }
-                        };
-                        Message msg = new Message();
-                        msg.what = 1;
-                        msg.obj = "测试子线程message";
-                        handler1.sendMessage(msg);
-                        Looper.loop();
-                    }
-                }).start();
-
-            }
-        });
-
-
-        /**
-         * 使用主线程中的handler发送消息，然后在主线程中更新ui
-         */
-        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Message message = new Message();
-                        message.what = 1;
-                        message.obj = "测试子线程发送消息，在主线程更新ui======>>>1";
-                        mHandler.sendMessage(message);
-                    }
-                }).start();
-            }
-        });
-
-        /**
-         * 使用主线程中的handler发送消息，然后在主线程中更新ui
-         */
-        findViewById(R.id.button7).setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Message message = new Message();
-                        message.what = 2;
-                        message.obj = "测试子线程发送消息，在主线程更新ui======>>>2";
-                        mHandler.sendMessage(message);
-                    }
-                }).start();
-                return true;
-            }
-        });
-
-        /**
-         * 消除handler的内存泄漏
-         */
-        findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HandlerTestActivity.this,SafeHandlerDemoActivity.class));
-            }
-        });
-    }
-
-
-    private Handler mHandler1 = new Handler(new Handler.Callback() {
         @Override
-        public boolean handleMessage(Message msg) {
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_message:
+                    Toast.makeText(HandlerTestActivity.this, "clicked me", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
             return false;
         }
-    });
-
-    /**
-     * 主线程中的Handler
-     */
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            show.setText("msg.what = " + msg.what + " 的时候 ： \n" + "msg.obj = " + msg.obj.toString());
-        }
-    };
-
-    /**
-     * 测试在onResume之前调用Thread更新ui
-     */
-    private void beforeOnResumeClick() {
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                show.setText("测试在onResume之前调用Thread更新ui");
-            }
-        }.start();
     }
 }

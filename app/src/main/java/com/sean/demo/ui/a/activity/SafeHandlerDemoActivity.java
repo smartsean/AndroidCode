@@ -19,11 +19,11 @@ public class SafeHandlerDemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safe_handler_demo);
         mMyHandler = new MyHandler(this);
-        mMyHandler.sendEmptyMessageDelayed(1,2000);
+        mMyHandler.sendEmptyMessageDelayed(1, 2000);
         finish();
     }
 
-    private static class MyHandler extends Handler{
+    private static class MyHandler extends Handler {
         WeakReference<SafeHandlerDemoActivity> mWeakReference;
 
         public MyHandler(SafeHandlerDemoActivity activity) {
@@ -33,7 +33,7 @@ public class SafeHandlerDemoActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             SafeHandlerDemoActivity activity = mWeakReference.get();
-            if (activity!=null){
+            if (activity != null) {
                 Toast.makeText(activity, "执行了", Toast.LENGTH_SHORT).show();
             }
         }

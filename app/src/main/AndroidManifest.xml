@@ -67,7 +67,7 @@
         <activity android:name=".ui.a.activity.ProgressViewActivity" />
         <activity android:name=".ui.a.activity.ArcProgressActivity" />
         <activity android:name=".ui.a.activity.webview.ViewDispatchActivity" />
-        <activity android:name=".ui.a.activity.SafeHandlerDemoActivity"></activity>
+        <activity android:name=".ui.a.activity.SafeHandlerDemoActivity" />
     </application>
 
 </manifest>
