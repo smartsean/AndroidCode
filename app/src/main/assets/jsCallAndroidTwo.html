@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js调用Android的第二种方式</title>
+</head>
+<body>
+<script type="text/javascript">
+    function callAndroid(){
+        document.location = "js://webviewSecond?arg1=111&arg2=222";
+    }
+</script>
+<button type="button" onclick="callAndroid()">点击我调用Android中的代码</button>
+</body>
+</html>

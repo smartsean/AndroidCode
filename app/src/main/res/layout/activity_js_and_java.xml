@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/js_call_android_one_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Js调用Android第一种方式" />
+
+    <Button
+        android:id="@+id/js_call_android_two_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Js调用Android第二种方式" />
+
+    <Button
+        android:id="@+id/js_call_android_three_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Js调用Android第三种方式" />
+
+    <Button
+        android:id="@+id/android_call_js_one_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Android调用Js第一种方式" />
+
+    <Button
+        android:id="@+id/android_call_js_two_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Android调用Js第二种方式" />
+
+    <Button
+        android:id="@+id/load_server_page_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="腾讯X5加载服务端网页" />
+
+
+</LinearLayout>

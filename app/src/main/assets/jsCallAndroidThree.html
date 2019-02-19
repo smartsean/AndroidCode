@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js调用Android的第三种方式</title>
+</head>
+<body>
+<script type="text/javascript">
+    function callAndroid(){
+        var result = prompt("js://jsCallAndroidThree?arg1=111&arg2=222");
+        alert("第三种方式调用：\n"+result);
+        <!--confirm("第三种方式调用：\n"+result);-->
+
+        <!--var res = confirm("js://jsCallAndroidThree?arg1=111&arg2=222");-->
+        <!--alert(res ? " success " : "fail")-->
+    }
+</script>
+<button type="button" onclick="callAndroid()">点击我调用Android中的代码</button>
+</body>
+</html>

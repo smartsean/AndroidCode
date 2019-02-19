@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Android调用Js的第一种方式</title>
+</head>
+<body>
+
+<div id="dataFromAndroid">123</div>
+
+<script type="text/javascript">
+    function callJsFromAndroid(message){
+        var test = message;
+        document.getElementById("dataFromAndroid").innerHTML = test
+        alert("第一种方式js接收到了Android传来的值，为"+test+",并回传给Android");
+        <!--jsCallAndroid.call("js调用了android中的call方法");-->
+    }
+</script>
+<!--<button type="button" onclick="callAndroid()">点击我调用Android中的代码</button>-->
+</body>
+</html>

@@ -21,14 +21,17 @@ import com.sean.demo.ui.a.activity.AsyncTaskActivity;
 import com.sean.demo.ui.a.activity.EventBusActivity;
 import com.sean.demo.ui.a.activity.HandlerTestActivity;
 import com.sean.demo.ui.a.activity.HandlerThreadActivity;
+import com.sean.demo.ui.a.activity.HandlerThreadTestActivity;
 import com.sean.demo.ui.a.activity.IntentServiceActivity;
 import com.sean.demo.ui.a.activity.MyDialogActivity;
 import com.sean.demo.ui.a.activity.ProgressViewActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
 import com.sean.demo.ui.a.activity.RecyclerItemDividerActivity;
 import com.sean.demo.ui.a.activity.ThreadPoolActivity;
+import com.sean.demo.ui.a.activity.webview.GlideActivity;
 import com.sean.demo.ui.a.activity.webview.ViewDispatchActivity;
 import com.sean.demo.ui.a.activity.webview.WebViewActivity;
+import com.sean.demo.ui.b.JsAndJavaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,12 +64,13 @@ public class AFragment extends BaseSupportFragment {
      * 初始化主页显示数据
      */
     private void initData() {
+        commonListModelList.add(new CommonListModel("Glide", GlideActivity.class));
         commonListModelList.add(new CommonListModel("Handler的使用", HandlerTestActivity.class));
         commonListModelList.add(new CommonListModel("EventBus", EventBusActivity.class));
         commonListModelList.add(new CommonListModel("RecyclerDemo", RecyclerDemoActivity.class));
         commonListModelList.add(new CommonListModel("RecyclerView的分割线", RecyclerItemDividerActivity.class));
         commonListModelList.add(new CommonListModel("自定义Dialog", MyDialogActivity.class));
-        commonListModelList.add(new CommonListModel("WebView", WebViewActivity.class));
+        commonListModelList.add(new CommonListModel("WebView", JsAndJavaActivity.class));
         commonListModelList.add(new CommonListModel("AsyncTask", AsyncTaskActivity.class));
         commonListModelList.add(new CommonListModel("IntentService", IntentServiceActivity.class));
         commonListModelList.add(new CommonListModel("HandlerThread", HandlerThreadActivity.class));
@@ -74,10 +78,11 @@ public class AFragment extends BaseSupportFragment {
         commonListModelList.add(new CommonListModel("自定义View无值进度条", ProgressViewActivity.class));
         commonListModelList.add(new CommonListModel("自定义View弧形进度条", ArcProgressActivity.class));
         commonListModelList.add(new CommonListModel("事件分发", ViewDispatchActivity.class));
+        commonListModelList.add(new CommonListModel("HandlerThread", HandlerThreadTestActivity.class));
     }
 
     private void initRecycler() {
-        commonListAdapter = new CommonListAdapter(context, commonListModelList);
+        commonListAdapter = new CommonListAdapter(context, R.layout.item_common_fragment_a, commonListModelList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         fragmentARv.setLayoutManager(linearLayoutManager);
         fragmentARv.setAdapter(commonListAdapter);

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'//表示此module是一个可以直接运行的app，可以直接run的
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 // apply plugin: 'com.android.library'//这表示此module是一个安卓依赖库的工程，不可直接run
 // apply plugin: 'java' //这表示此module是一个java项目，在此module中只能使用java的api
 
@@ -13,7 +15,7 @@ android {
         //包名，应用的id，唯一标示
         applicationId "com.sean.demo"
         //决定此应用最低兼容的安卓系统版本
-        minSdkVersion 15
+        minSdkVersion 19
         //经过充分测试是被的SDK版本，也就是目标SDK版本（决定此应用最高可兼容的安卓系统版本）
         targetSdkVersion 27
         //版本号
@@ -22,8 +24,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
 
+        ndk { abiFilters "armeabi" }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     //构建的类型方式
     buildTypes {
 
@@ -58,7 +66,9 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.0.2'
     implementation 'com.android.support:recyclerview-v7:27.0.2'
     /** Glide加载图片*/
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     /** 消息传递*/
     implementation 'org.greenrobot:eventbus:3.0.0'
     /** RecyclerView的万能适配器*/
@@ -70,5 +80,13 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     /**我自己的开发工具包*/
-    compile 'cn.smartsean:lib:0.0.8'
+    compile('cn.smartsean:lib:0.0.8') {
+        exclude group: 'com.github.bumptech'
+    }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.anko:anko-common:$anko_version"
+    androidExtensions {
+        experimental = true
+    }
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar')
 }

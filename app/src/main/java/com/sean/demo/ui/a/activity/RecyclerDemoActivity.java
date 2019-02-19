@@ -1,14 +1,17 @@
 package com.sean.demo.ui.a.activity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.Button;
 
+import com.bumptech.glide.Glide;
 import com.sean.demo.R;
 import com.sean.demo.ui.BaseActivity;
 import com.sean.demo.ui.a.adapter.RecyclerDemoAdapter;
@@ -20,8 +23,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 /**
- * @author  SmartSean
+ * @author SmartSean
  */
 public class RecyclerDemoActivity extends BaseActivity {
 
@@ -43,6 +47,9 @@ public class RecyclerDemoActivity extends BaseActivity {
 
     private Context context;
     private LinearLayoutManager lm;
+    private boolean sIsScrolling;
+    private RecyclerView.OnScrollListener mOnScrollListener;
+    LruCache<String,Bitmap> mStringBitmapLruCache = new LruCache<>(20);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +66,36 @@ public class RecyclerDemoActivity extends BaseActivity {
         initDataForStaggeredGridLayout();
         StaggeredGridLayoutManager sgl = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerDemo.setLayoutManager(sgl);
-        recyclerDemoAdapter = new RecyclerDemoAdapter(context, recyclerDemoModels1);
-        recyclerDemoAdapter.getRandomHeight(recyclerDemoModels1);
+        recyclerDemoAdapter = new RecyclerDemoAdapter(context, recyclerDemoModels);
+        recyclerDemoAdapter.getRandomHeight(recyclerDemoModels);
 
         recyclerDemo.setAdapter(recyclerDemoAdapter);
+        /**
+         * SCROLL_STATE_DRAGGING      正在滚动
+         * SCROLL_STATE_SETTLING      手指做了抛的动作（手指离开屏幕前，用力滑了一下）
+         * SCROLL_STATE_IDLE          停止滚动
+         */
+        mOnScrollListener = new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING || newState == RecyclerView.SCROLL_STATE_SETTLING) {
+                    sIsScrolling = true;
+                    Glide.with(RecyclerDemoActivity.this).pauseRequests();
+                } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (sIsScrolling) {
+                        Glide.with(RecyclerDemoActivity.this).resumeRequests();
+                    }
+                    sIsScrolling = false;
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        };
+        recyclerDemo.addOnScrollListener(mOnScrollListener);
     }
 
     private void initData() {
@@ -77,6 +110,51 @@ public class RecyclerDemoActivity extends BaseActivity {
         recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.i, "这是第八个"));
         recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.a, "这是第九个"));
         recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.a, "这是第十个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
+        recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
         recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.d, "这是第十一个"));
         recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.e, "这是第十二个"));
         recyclerDemoModels.add(new RecyclerDemoModel(R.drawable.eee, "这是第十三个"));
@@ -95,7 +173,6 @@ public class RecyclerDemoActivity extends BaseActivity {
         recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.i, "这是第八个"));
         recyclerDemoModels1.add(new RecyclerDemoModel(R.drawable.a, "这是第九个"));
     }
-
 
 
     @OnClick({R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4})
@@ -123,5 +200,11 @@ public class RecyclerDemoActivity extends BaseActivity {
                 recyclerDemo.setAdapter(new RecyclerDemoAdapter(context, recyclerDemoModels1));
                 break;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        recyclerDemo.removeOnScrollListener(mOnScrollListener);
     }
 }

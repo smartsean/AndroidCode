@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -68,6 +76,16 @@
         <activity android:name=".ui.a.activity.ArcProgressActivity" />
         <activity android:name=".ui.a.activity.webview.ViewDispatchActivity" />
         <activity android:name=".ui.a.activity.SafeHandlerDemoActivity" />
+        <activity android:name=".ui.a.activity.webview.GlideActivity" />
+        <activity android:name=".ui.a.activity.GlideSecondActivity" />
+        <activity android:name=".ui.a.activity.HandlerThreadTestActivity" />
+        <activity android:name=".ui.b.JsAndJavaActivity" />
+        <activity android:name=".ui.b.js_call_android.JsCallAndroidOneActivity" />
+        <activity android:name=".ui.b.js_call_android.JsCallAndroidTwoActivity" />
+        <activity android:name=".ui.b.js_call_android.JsCallAndroidThreeActivity" />
+        <activity android:name=".ui.b.android_call_js.AndroidCallJsOneActivity" />
+        <activity android:name=".ui.b.android_call_js.AndroidCallJsTwoActivity" />
+        <activity android:name=".ui.b.LoadServerPageActivity"></activity>
     </application>
 
 </manifest>

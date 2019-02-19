@@ -8,23 +8,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sean.demo.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author  SmartSean
+ * @author SmartSean
  */
 public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapter.ViewHolder> {
 
     private List<Integer> mHeights;
 
-    public void getRandomHeight(List<RecyclerDemoModel> mList){
+    public void getRandomHeight(List<RecyclerDemoModel> mList) {
         mHeights = new ArrayList<>();
-        for(int i=0; i < mList.size();i++){
+        for (int i = 0; i < mList.size(); i++) {
             //随机的获取一个范围为200-600直接的高度
-            mHeights.add((int)(300+Math.random()*400));
+            mHeights.add((int) (300 + Math.random() * 400));
         }
     }
 
@@ -33,6 +34,7 @@ public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapte
 
         ImageView imageId;
         TextView desc;
+
         public ViewHolder(View itemView) {
             super(itemView);
             imageId = (ImageView) itemView.findViewById(R.id.item_image);
@@ -66,7 +68,8 @@ public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapte
         holder.itemView.setLayoutParams(layoutParams);
 
         RecyclerDemoModel bean = recyclerDemoModels.get(position);
-        holder.imageId.setImageResource(bean.getImageId());
+        Glide.with(context).load(bean.getImageId()).into(holder.imageId);
+//        holder.imageId.setImageResource(bean.getImageId());
         holder.desc.setText(bean.getDesc());
     }
 
@@ -75,6 +78,4 @@ public class RecyclerDemoAdapter extends RecyclerView.Adapter<RecyclerDemoAdapte
     public int getItemCount() {
         return recyclerDemoModels.size();
     }
-
-
 }

@@ -18,8 +18,8 @@ public class CommonListAdapter extends BaseQuickAdapter<CommonListModel, BaseVie
     private Context context;
     private Resources resources;
 
-    public CommonListAdapter(Context context, List<CommonListModel> data) {
-        super(R.layout.item_common_fragment_a, data);
+    public CommonListAdapter(Context context,int layoutResId, List<CommonListModel> data) {
+        super(layoutResId, data);
         this.context = context;
         this.resources = context.getResources();
     }
