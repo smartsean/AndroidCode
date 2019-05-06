@@ -17,7 +17,7 @@ android {
         //决定此应用最低兼容的安卓系统版本
         minSdkVersion 19
         //经过充分测试是被的SDK版本，也就是目标SDK版本（决定此应用最高可兼容的安卓系统版本）
-        targetSdkVersion 27
+        targetSdkVersion 28
         //版本号
         versionCode 1
         //版本名
@@ -25,7 +25,7 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        ndk { abiFilters "armeabi" }
+        ndk { abiFilters "armeabi", "x86" }
     }
     sourceSets {
         main {

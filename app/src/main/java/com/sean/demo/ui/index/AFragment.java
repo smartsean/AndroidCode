@@ -22,7 +22,7 @@ import com.sean.demo.ui.a.activity.EventBusActivity;
 import com.sean.demo.ui.a.activity.HandlerTestActivity;
 import com.sean.demo.ui.a.activity.HandlerThreadActivity;
 import com.sean.demo.ui.a.activity.HandlerThreadTestActivity;
-import com.sean.demo.ui.a.activity.IntentServiceActivity;
+import com.sean.demo.ui.a.activity.intentservice.IntentServiceActivity;
 import com.sean.demo.ui.a.activity.MyDialogActivity;
 import com.sean.demo.ui.a.activity.ProgressViewActivity;
 import com.sean.demo.ui.a.activity.RecyclerDemoActivity;
@@ -30,7 +30,6 @@ import com.sean.demo.ui.a.activity.RecyclerItemDividerActivity;
 import com.sean.demo.ui.a.activity.ThreadPoolActivity;
 import com.sean.demo.ui.a.activity.webview.GlideActivity;
 import com.sean.demo.ui.a.activity.webview.ViewDispatchActivity;
-import com.sean.demo.ui.a.activity.webview.WebViewActivity;
 import com.sean.demo.ui.b.JsAndJavaActivity;
 
 import java.util.ArrayList;

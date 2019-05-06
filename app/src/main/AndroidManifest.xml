@@ -61,7 +61,7 @@
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.a.activity.IntentServiceActivity"
+            android:name=".ui.a.activity.intentservice.IntentServiceActivity"
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -69,7 +69,7 @@
             android:configChanges="screenSize"
             android:screenOrientation="portrait" />
 
-        <service android:name=".ui.a.activity.UploadImgService" />
+        <service android:name=".ui.a.activity.intentservice.UploadImageService" />
 
         <activity android:name=".ui.a.activity.RecyclerItemDividerActivity" />
         <activity android:name=".ui.a.activity.ProgressViewActivity" />
