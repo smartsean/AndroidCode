@@ -1,6 +1,7 @@
 package com.sean.demo.ui.b.js_call_android;
 
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class JsCallAndroidOneActivity extends BaseActivity implements IUpdateAnd
         mWebView = findViewById(R.id.web_view);
         mMessageShowTv = findViewById(R.id.message_show_tv);
         mWebView.getSettings().setJavaScriptEnabled(true);
+        SparseArray<String > array = new SparseArray<>();
         mWebView.addJavascriptInterface(new JsCallAndroidInteface(JsCallAndroidOneActivity.this),"jsCallAndroid");
         mWebView.loadUrl("file:///android_asset/jsCallAndroidOne.html");
     }

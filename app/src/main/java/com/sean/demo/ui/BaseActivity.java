@@ -1,6 +1,7 @@
 package com.sean.demo.ui;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,9 @@ public class BaseActivity extends AppCompatActivity {
         initView();
         setSupportActionBar(commonTitleTb);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        SharedPreferences.Editor sp = getSharedPreferences("dd",MODE_PRIVATE).edit();
+        sp.commit();
+        sp.apply();
     }
 
     protected void initView() {
